@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADP Paystub Generator Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="app.js"></script>
+    <style>
+        .form-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+        .form-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+        .section-row { margin-bottom: 2rem; border-bottom: 1px solid var(--panel-border); padding-bottom: 1rem; }
+        .section-title { font-size: 1.1rem; color: var(--accent); margin-bottom: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .subsection-title { font-size: 0.9rem; color: #a5b4fc; margin-bottom: 0.5rem; text-transform: uppercase; font-weight: 600; }
+        .col-span-2 { grid-column: span 2; }
+        .col-span-4 { grid-column: span 4; }
+        .dense-group { margin-bottom: 0.5rem; }
+        .dense-group label { font-size: 0.75rem; margin-bottom: 0.25rem; }
+        .dense-group input { padding: 0.6rem 0.8rem; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+    
+    <div class="container glass-panel" style="max-width: 1200px;">
+        <header>
+            <h1>Paystub Generator <span class="badge">Pro</span></h1>
+            <p>Generate professional ADP-style paystubs instantly.</p>
+        </header>
+
+        <form id="paystub-form">
+            <!-- GENERAL INFO -->
+            <div class="section-row">
+                <div class="section-title">General Information</div>
+                <div class="form-grid-2">
+                    <div>
+                        <div class="subsection-title">Employer</div>
+                        <div class="input-group">
+                            <label>Employer Name</label>
+                            <input type="text" name="employer name.0" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Employer Address Line 1</label>
+                            <input type="text" name="employer addr 1">
+                        </div>
+                        <div class="input-group">
+                            <label>Employer Address Line 2</label>
+                            <input type="text" name="employer addr2">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="subsection-title">Employee</div>
+                        <div class="input-group">
+                            <label>Employee Name</label>
+                            <input type="text" name="EMPLOYEE NAME" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Employee Address Line 1</label>
+                            <input type="text" name="EMPLOYEE ADDR1">
+                        </div>
+                        <div class="input-group">
+                            <label>Employee Address Line 2</label>
+                            <input type="text" name="EMPLOYEE ADDR2">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-grid-4" style="margin-top: 1rem;">
+                    <div class="input-group"><label>SSN</label><input type="text" name="SSN"></div>
+                    <div class="input-group"><label>Job Title</label><input type="text" name="TITLE"></div>
+                    <div class="input-group"><label>Check Number</label><input type="text" name="CHECK NUM"></div>
+                    <div class="input-group">
+                        <label>Number of Paystubs</label>
+                        <select name="num_stubs" style="background: var(--input-bg); border: 1px solid var(--input-border); border-radius: 12px; padding: 0.875rem 1rem; color: var(--text-primary); font-family: inherit; font-size: 1rem;">
+                            <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EARNINGS -->
+            <div class="section-row">
+                <div class="section-title">Earnings</div>
+                <div class="form-grid-4">
+                    <div class="subsection-title col-span-4" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; margin-bottom: 0; color: #fff;">Regular</div>
+                    <div class="input-group dense-group"><label>Rate</label><input type="text" name="REG-RATE"></div>
+                    <div class="input-group dense-group"><label>Hours</label><input type="text" name="REG-HOURS"></div>
+                    <div class="input-group dense-group"><label>This Period</label><input type="text" name="REG-THIS PERIOD"></div>
+                    <div class="input-group dense-group"><label>YTD</label><input type="text" name="REG-YTD"></div>
+
+                    <div class="subsection-title col-span-4" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; margin-bottom: 0; margin-top: 1rem; color: #fff;">Overtime</div>
+                    <div class="input-group dense-group"><label>Rate</label><input type="text" name="OT-RATE"></div>
+                    <div class="input-group dense-group"><label>Hours</label><input type="text" name="OT-HOURS"></div>
+                    <div class="input-group dense-group"><label>This Period</label><input type="text" name="OT-THISPERIOD"></div>
+                    <div class="input-group dense-group"><label>YTD</label><input type="text" name="OT-YTD"></div>
+
+                    <div class="subsection-title col-span-4" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; margin-bottom: 0; margin-top: 1rem; color: #fff;">Holiday</div>
+                    <div class="input-group dense-group"><label>Rate</label><input type="text" name="HOLIDAY-RATE"></div>
+                    <div class="input-group dense-group"><label>Hours</label><input type="text" name="HOLIDAY-HOURS"></div>
+                    <div class="input-group dense-group"><label>This Period</label><input type="text" name="HOLIDAY-THISPERIOD"></div>
+                    <div class="input-group dense-group"><label>YTD</label><input type="text" name="HOLIDAY-YTD"></div>
+
+                    <div class="subsection-title col-span-4" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; margin-bottom: 0; margin-top: 1rem; color: #fff;">Tuition / Other</div>
+                    <div class="input-group dense-group"><label>Rate</label><input type="text" name="TUITION-RATE"></div>
+                    <div class="input-group dense-group"><label>This Period</label><input type="text" name="TUITION-THISPERIOD"></div>
+                    <div class="input-group dense-group"><label>YTD</label><input type="text" name="TUITION-YTD"></div>
+                    <div></div> <!-- spacer -->
+
+                    <div class="subsection-title col-span-4" style="border-bottom: 1px solid rgba(255,255,255,0.1); margin-top: 1rem;">Totals</div>
+                    <div class="input-group dense-group col-span-2"><label>Gross Pay</label><input type="text" name="GROSS PAY"></div>
+                    <div class="input-group dense-group col-span-2"><label>Net Pay</label><input type="text" name="NETPAY"></div>
+                </div>
+            </div>
+
+            <!-- TAXES -->
+            <div class="section-row">
+                <div class="section-title">Taxes</div>
+                <div class="form-grid-4">
+                    <div class="input-group dense-group"><label>Fed Income Tax TP</label><input type="text" name="FED INCOME TAX-TP"></div>
+                    <div class="input-group dense-group"><label>Fed Income Tax YTD</label><input type="text" name="FED INCOME TAX-YTD"></div>
+                    <div class="input-group dense-group"><label>Social Sec Tax TP</label><input type="text" name="SOCIAL SEC TAX-TP"></div>
+                    <div class="input-group dense-group"><label>Social Sec Tax YTD</label><input type="text" name="SOCIAL SEC TAX-YTD"></div>
+
+                    <div class="input-group dense-group"><label>Medicare Tax TP</label><input type="text" name="MEDICARE TAX-TP"></div>
+                    <div class="input-group dense-group"><label>Medicare Tax YTD</label><input type="text" name="MEDICARE TAX-YTD"></div>
+                    <div class="input-group dense-group"><label>State Income Tax TP</label><input type="text" name="STATE INCOME TAX-TP"></div>
+                    <div class="input-group dense-group"><label>State Income Tax YTD</label><input type="text" name="STATE INCOME TAX-YTD"></div>
+
+                    <div class="input-group dense-group"><label>Local Tax TP</label><input type="text" name="LOCAL TAX-TP"></div>
+                    <div class="input-group dense-group"><label>Local Tax YTD</label><input type="text" name="LOCAL TAX-YTD"></div>
+                    <div class="input-group dense-group"><label>SUI/SDI Tax TP</label><input type="text" name="SUI/SDI TAX-TP"></div>
+                    <div class="input-group dense-group"><label>SUI/SDI Tax YTD</label><input type="text" name="SUI/SDI TAX-YTD"></div>
+                </div>
+            </div>
+
+            <!-- DEDUCTIONS & OTHER -->
+            <div class="section-row" style="border-bottom: none;">
+                <div class="section-title">Benefits, Deductions & Other</div>
+                <div class="form-grid-4">
+                    <div class="input-group dense-group"><label>401K TP</label><input type="text" name="401K-TP"></div>
+                    <div class="input-group dense-group"><label>401K YTD</label><input type="text" name="401K-YTD"></div>
+                    <div class="input-group dense-group"><label>Stock TP</label><input type="text" name="STOCK-TP"></div>
+                    <div class="input-group dense-group"><label>Stock YTD</label><input type="text" name="STOCK-YTD"></div>
+
+                    <div class="input-group dense-group"><label>Life TP</label><input type="text" name="LIFE-TP"></div>
+                    <div class="input-group dense-group"><label>Life YTD</label><input type="text" name="LIFE-YTD"></div>
+                    <div class="input-group dense-group"><label>Bond TP</label><input type="text" name="BOND-TP"></div>
+                    <div class="input-group dense-group"><label>Bond YTD</label><input type="text" name="BOND-YTD"></div>
+
+                    <div class="input-group dense-group"><label>Loan TP</label><input type="text" name="LOAN-TP"></div>
+                    <div class="input-group dense-group"><label>Loan YTD</label><input type="text" name="LOAN-YTD"></div>
+                    <div class="input-group dense-group"><label>Loan Amt Paid YTD</label><input type="text" name="LOAN AMOUNT PAID-YTD"></div>
+                    <div></div>
+
+                    <div class="input-group dense-group"><label>Group Term Life TP</label><input type="text" name="GROUP TERM LIFE-TP"></div>
+                    <div class="input-group dense-group"><label>Group Term Life YTD</label><input type="text" name="GROUP TERM LIFE-YTD"></div>
+                    <div class="input-group dense-group"><label>Vacation Hours</label><input type="text" name="VACHOURS"></div>
+                    <div class="input-group dense-group"><label>Sick Hours</label><input type="text" name="SICK-HOURS"></div>
+
+                    <div class="input-group dense-group"><label>Pay To</label><input type="text" name="PAYTO"></div>
+                    <div class="input-group dense-group"><label>Amount (Check)</label><input type="text" name="AMOUNT"></div>
+                    <div class="input-group dense-group"><label>Life</label><input type="text" name="LIFE"></div>
+                    <div class="input-group dense-group"><label>Pay Date</label><input type="text" id="PAYDATE" name="PAYDATE" readonly></div>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button type="button" id="mock-data-btn" class="btn secondary">Fill Mock Data</button>
+                <button type="submit" id="generate-btn" class="btn primary">
+                    <span>Generate PDF Paystub</span>
+                    <div class="spinner disabled"></div>
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
