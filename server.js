@@ -193,6 +193,10 @@ app.post('/api/generate-paystub', async (req, res) => {
     }
 });
 
-app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
-});
+// Vercel Serverless Export configuration
+if (process.env.NODE_ENV !== 'production' && require.main === module) {
+    app.listen(port, () => {
+        console.log(`Server listening on port ${port}`);
+    });
+}
+module.exports = app;
